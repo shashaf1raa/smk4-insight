@@ -1,0 +1,26 @@
+@extends('admin.layout')
+
+@section('title', 'Edit Produk')
+
+@section('admin-content')
+    <h1>Edit Produk</h1>
+
+    @if ($errors->any())
+        <div class="alert alert-error">
+            <ul style="margin: 0; padding-left: 18px;">
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
+    <form method="POST" action="{{ route('admin.produk.update', $produk) }}" enctype="multipart/form-data" class="admin-form">
+        @csrf
+        @method('PUT')
+        @include('admin.produk._form', ['produk' => $produk])
+
+        <button type="submit" class="btn btn-navy">Update Produk</button>
+        <a href="{{ route('admin.produk.index') }}" class="btn btn-outline-light" style="border-color: var(--navy); color: var(--navy);">Batal</a>
+    </form>
+@endsection

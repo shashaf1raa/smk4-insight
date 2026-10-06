@@ -33,6 +33,9 @@
                 <a href="{{ route('admin.berita.index') }}" class="{{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
                     <p>Berita & Artikel</p>
                 </a>
+                <a href="{{ route('admin.produk.index') }}" class="{{ request()->routeIs('admin.produk.*') ? 'active' : '' }}">
+                <p>Produk & Karya</p>
+                </a>
                 <a href="{{ route('admin.pesan.index') }}" class="{{ request()->routeIs('admin.pesan.*') ? 'active' : '' }}">
                     <p>Pesan Kontak</p>
                     @if ($pesanBelumDibaca > 0)

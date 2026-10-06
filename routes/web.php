@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
 use App\Http\Controllers\KontakController;
 use App\Http\Controllers\Admin\PesanController;
+use App\Http\Controllers\Admin\ProdukKaryaController as AdminProdukKaryaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 |--------------------------------------------------------------------------
 */
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+    Route::resource('produk', AdminProdukKaryaController::class)->parameters(['produk' => 'produk']);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::resource('berita', AdminBeritaController::class)->parameters(['berita' => 'berita']);
     Route::resource('pesan', PesanController::class)->parameters(['pesan' => 'pesan'])->only(['index', 'show', 'destroy']);
